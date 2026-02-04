@@ -5,15 +5,17 @@ interface EventListProps {
   events: Event[];
   totalCount: number;
   isFiltered: boolean;
+  hasFeaturedEvent?: boolean;
+  featuredCount?: number;
 }
 
-export function EventList({ events, totalCount, isFiltered }: EventListProps) {
-  if (events.length === 0) {
+export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = false, featuredCount = 0 }: EventListProps) {
+  if (events.length === 0 && !hasFeaturedEvent) {
     return (
-      <div className="text-center py-16 px-4">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky-100 mb-4">
+      <div className="text-center py-20 px-4">
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-sky-100 to-sky-200 mb-6">
           <svg
-            className="w-8 h-8 text-sky-400"
+            className="w-10 h-10 text-sky-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -27,23 +29,26 @@ export function EventList({ events, totalCount, isFiltered }: EventListProps) {
             />
           </svg>
         </div>
-        <h3 className="text-lg font-medium text-gray-800 mb-2">
+        <h3 className="text-xl font-bold text-gray-800 mb-2">
           Nenhum evento encontrado
         </h3>
         <p className="text-gray-500 max-w-md mx-auto">
           {isFiltered
-            ? 'Tente ajustar os filtros ou buscar por outro termo.'
-            : 'Não há eventos cadastrados no momento.'}
+            ? 'Tente ajustar os filtros ou buscar por outro termo para encontrar mais eventos.'
+            : 'Não há eventos cadastrados no momento. Volte em breve!'}
         </p>
       </div>
     );
   }
 
+  // Calcular total exibido (eventos + featured)
+  const displayedCount = events.length + featuredCount;
+
   return (
     <section aria-label="Lista de eventos">
-      {/* Contador de resultados - acessível para screen readers */}
+      {/* Contador de resultados */}
       <div 
-        className="mb-4" 
+        className="mb-6" 
         role="status" 
         aria-live="polite"
         aria-atomic="true"
@@ -51,23 +56,38 @@ export function EventList({ events, totalCount, isFiltered }: EventListProps) {
         <p className="text-sm text-gray-500">
           {isFiltered ? (
             <>
-              Mostrando <span className="font-semibold text-gray-700">{events.length}</span> de{' '}
-              <span className="font-semibold text-gray-700">{totalCount}</span> eventos
+              Mostrando <span className="font-bold text-gray-700">{displayedCount}</span> de{' '}
+              <span className="font-bold text-gray-700">{totalCount}</span> eventos
             </>
           ) : (
             <>
-              <span className="font-semibold text-gray-700">{events.length}</span> eventos encontrados
+              <span className="font-bold text-gray-700">{displayedCount}</span> eventos encontrados
             </>
           )}
         </p>
       </div>
 
-      {/* Grid de eventos - 4 colunas em telas grandes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {events.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
+      {/* Próximos eventos - grid de cards */}
+      {events.length > 0 && (
+        <div>
+          <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span className="w-1 h-6 bg-gradient-to-b from-rose-500 to-orange-500 rounded-full"></span>
+            Próximos Eventos
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Se não há mais eventos além do destaque */}
+      {events.length === 0 && hasFeaturedEvent && (
+        <div className="text-center py-8 text-gray-500">
+          <p>Mais eventos em breve!</p>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <!-- Corpo do calendário -->
+  <rect x="4" y="10" width="40" height="34" rx="6" fill="white" stroke="#0ea5e9" stroke-width="3"/>
+  
+  <!-- Cabeçalho colorido -->
+  <rect x="4" y="10" width="40" height="12" rx="6" fill="#0ea5e9"/>
+  <rect x="4" y="16" width="40" height="6" fill="#0ea5e9"/>
+  
+  <!-- Pinos -->
+  <rect x="14" y="4" width="4" height="12" rx="2" fill="#0ea5e9"/>
+  <rect x="30" y="4" width="4" height="12" rx="2" fill="#0ea5e9"/>
+  
+  <!-- Número do dia -->
+  <text x="24" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0ea5e9">04</text>
+</svg>

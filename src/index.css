@@ -87,6 +87,16 @@ select {
   background-size: 1.25rem;
   padding-right: 2.5rem;
 }
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
