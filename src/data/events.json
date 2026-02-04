@@ -1,0 +1,219 @@
+[
+  {
+    "id": "1",
+    "title": "Marisa Monte - Portas Tour",
+    "category": "SHOW",
+    "thumbnail": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
+    "date": "2026-02-07T21:00:00",
+    "description": "Marisa Monte apresenta sua turnê 'Portas', um espetáculo que celebra a música brasileira com canções clássicas e do novo álbum. Uma noite inesquecível com uma das maiores artistas do Brasil.",
+    "location": "Teatro Deodoro",
+    "address": "Praça Marechal Deodoro, s/n - Centro, Maceió - AL",
+    "price": 180
+  },
+  {
+    "id": "2",
+    "title": "O Auto da Compadecida",
+    "category": "TEATRO",
+    "thumbnail": "https://images.unsplash.com/photo-1503095396549-807759245b35?w=400&h=300&fit=crop",
+    "date": "2026-02-08T19:00:00",
+    "description": "A clássica obra de Ariano Suassuna ganha nova montagem com elenco local. Uma comédia que retrata o sertão nordestino com humor e crítica social.",
+    "location": "Teatro Gustavo Leite",
+    "address": "R. Barão de Penedo, 65 - Centro, Maceió - AL",
+    "price": 60
+  },
+  {
+    "id": "3",
+    "title": "Stand-up Comedy com Afonso Padilha",
+    "category": "STANDUP",
+    "thumbnail": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=400&h=300&fit=crop",
+    "date": "2026-02-14T20:00:00",
+    "description": "Afonso Padilha traz seu novo show de stand-up para Maceió. Prepare-se para rir muito com observações do cotidiano e histórias hilariantes.",
+    "location": "Centro Cultural de Maceió",
+    "address": "Av. da Paz, 1422 - Jaraguá, Maceió - AL",
+    "price": 80
+  },
+  {
+    "id": "4",
+    "title": "Festival de Jazz & Blues",
+    "category": "FESTIVAL",
+    "thumbnail": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=400&h=300&fit=crop",
+    "date": "2026-02-15T18:00:00",
+    "description": "Dois dias de música de qualidade com bandas nacionais e internacionais. Food trucks, artesanato e muito jazz na orla de Pajuçara.",
+    "location": "Orla de Pajuçara",
+    "address": "Av. Dr. Antônio Gouveia - Pajuçara, Maceió - AL",
+    "price": 120
+  },
+  {
+    "id": "5",
+    "title": "Exposição: Arte Alagoana Contemporânea",
+    "category": "EXPOSICAO",
+    "thumbnail": "https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=400&h=300&fit=crop",
+    "date": "2026-02-05T10:00:00",
+    "description": "Mostra coletiva com obras de 20 artistas alagoanos. Pinturas, esculturas e instalações que retratam a identidade cultural do estado.",
+    "location": "Museu Théo Brandão",
+    "address": "Av. da Paz, 1490 - Jaraguá, Maceió - AL",
+    "price": null
+  },
+  {
+    "id": "6",
+    "title": "Alceu Valença - Ao Vivo",
+    "category": "SHOW",
+    "date": "2026-02-21T20:00:00",
+    "description": "O mestre do frevo e do forró apresenta seus maiores sucessos como 'Morena Tropicana', 'Anunciação' e 'La Belle de Jour'. Uma celebração da música pernambucana.",
+    "location": "Espaço Cultural da Orla",
+    "address": "Av. Dr. Antônio Gouveia, 500 - Pajuçara, Maceió - AL",
+    "price": 150
+  },
+  {
+    "id": "7",
+    "title": "Hamlet - Shakespeare em Maceió",
+    "category": "TEATRO",
+    "thumbnail": "https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=400&h=300&fit=crop",
+    "date": "2026-02-22T19:30:00",
+    "description": "Uma adaptação moderna do clássico de Shakespeare com elementos da cultura nordestina. Direção de João Silva com elenco premiado.",
+    "location": "Teatro Deodoro",
+    "address": "Praça Marechal Deodoro, s/n - Centro, Maceió - AL",
+    "price": 70
+  },
+  {
+    "id": "8",
+    "title": "Balé Folclórico de Alagoas",
+    "category": "DANCA",
+    "thumbnail": "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=300&fit=crop",
+    "date": "2026-02-09T17:00:00",
+    "description": "Espetáculo que celebra as danças tradicionais alagoanas: coco de roda, quilombo, guerreiro e muito mais. Uma viagem pela cultura popular.",
+    "location": "Teatro Gustavo Leite",
+    "address": "R. Barão de Penedo, 65 - Centro, Maceió - AL",
+    "price": 40
+  },
+  {
+    "id": "9",
+    "title": "Cinema ao Ar Livre: Clássicos Brasileiros",
+    "category": "CINEMA",
+    "thumbnail": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=300&fit=crop",
+    "date": "2026-02-28T19:00:00",
+    "description": "Sessão especial com o filme 'Central do Brasil' de Walter Salles. Pipoca e refrigerante inclusos. Traga sua cadeira de praia!",
+    "location": "Praça Multieventos de Jaraguá",
+    "address": "R. Sá e Albuquerque - Jaraguá, Maceió - AL",
+    "price": null
+  },
+  {
+    "id": "10",
+    "title": "Fábio Porchat - Solo",
+    "category": "STANDUP",
+    "date": "2026-02-27T21:00:00",
+    "description": "Fábio Porchat apresenta seu novo show solo onde mistura stand-up com contação de histórias. Humor inteligente e muitas risadas garantidas.",
+    "location": "Teatro Deodoro",
+    "address": "Praça Marechal Deodoro, s/n - Centro, Maceió - AL",
+    "price": 100
+  },
+  {
+    "id": "11",
+    "title": "Orquestra Sinfônica de Alagoas",
+    "category": "SHOW",
+    "thumbnail": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400&h=300&fit=crop",
+    "date": "2026-02-06T20:00:00",
+    "description": "Concerto especial com obras de Villa-Lobos e compositores alagoanos. Regência do maestro Carlos Eduardo Prates.",
+    "location": "Teatro Deodoro",
+    "address": "Praça Marechal Deodoro, s/n - Centro, Maceió - AL",
+    "price": 50
+  },
+  {
+    "id": "12",
+    "title": "Festival Gastronômico da Orla",
+    "category": "FESTIVAL",
+    "thumbnail": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop",
+    "date": "2026-03-01T12:00:00",
+    "description": "Festival com os melhores chefs de Maceió apresentando pratos típicos alagoanos. Música ao vivo, artesanato e diversão para toda família.",
+    "location": "Orla de Ponta Verde",
+    "address": "Av. Álvaro Otacílio - Ponta Verde, Maceió - AL",
+    "price": null
+  },
+  {
+    "id": "13",
+    "title": "Lenine - Em Trânsito",
+    "category": "SHOW",
+    "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=400&h=300&fit=crop",
+    "date": "2026-03-07T21:00:00",
+    "description": "Lenine apresenta show da turnê 'Em Trânsito' com músicas do novo álbum e clássicos como 'Paciência' e 'Jack Soul Brasileiro'.",
+    "location": "Espaço Cultural da Orla",
+    "address": "Av. Dr. Antônio Gouveia, 500 - Pajuçara, Maceió - AL",
+    "price": 160
+  },
+  {
+    "id": "14",
+    "title": "Contação de Histórias para Crianças",
+    "category": "TEATRO",
+    "thumbnail": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop",
+    "date": "2026-02-08T15:00:00",
+    "description": "Tarde especial para os pequenos com contação de histórias folclóricas alagoanas. Atividades interativas e oficina de desenho.",
+    "location": "Biblioteca Pública de Maceió",
+    "address": "R. João Pessoa, 382 - Centro, Maceió - AL",
+    "price": null
+  },
+  {
+    "id": "15",
+    "title": "Exposição Fotográfica: Maceió Antiga",
+    "category": "EXPOSICAO",
+    "thumbnail": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=400&h=300&fit=crop",
+    "date": "2026-02-10T09:00:00",
+    "description": "Acervo histórico com mais de 100 fotografias que contam a história de Maceió desde o século XIX. Curadoria do Instituto Histórico de Alagoas.",
+    "location": "Museu Palácio Floriano Peixoto",
+    "address": "Praça Marechal Floriano Peixoto - Centro, Maceió - AL",
+    "price": 10
+  },
+  {
+    "id": "16",
+    "title": "Noite de Tango Argentino",
+    "category": "DANCA",
+    "thumbnail": "https://images.unsplash.com/photo-1545959570-a94084071b5d?w=400&h=300&fit=crop",
+    "date": "2026-02-14T20:00:00",
+    "description": "Espetáculo especial de Dia dos Namorados com a companhia Buenos Aires Tango. Aula aberta às 19h para iniciantes.",
+    "location": "Centro Cultural de Maceió",
+    "address": "Av. da Paz, 1422 - Jaraguá, Maceió - AL",
+    "price": 90
+  },
+  {
+    "id": "17",
+    "title": "Documentário: Quilombos de Alagoas",
+    "category": "CINEMA",
+    "thumbnail": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=300&fit=crop",
+    "date": "2026-02-20T19:00:00",
+    "description": "Pré-estreia do documentário que retrata a história e a cultura dos quilombos alagoanos, com destaque para a Serra da Barriga. Debate com o diretor após a sessão.",
+    "location": "Cine Arte Pajuçara",
+    "address": "R. Jangadeiros Alagoanos, 1231 - Pajuçara, Maceió - AL",
+    "price": 20
+  },
+  {
+    "id": "18",
+    "title": "Whindersson Nunes - Tour 2026",
+    "category": "STANDUP",
+    "thumbnail": "https://images.unsplash.com/photo-1527224538127-2104bb71c51b?w=400&h=300&fit=crop",
+    "date": "2026-03-14T21:00:00",
+    "description": "O comediante mais popular do Brasil traz seu novo show para Maceió. Uma noite de muito humor e irreverência.",
+    "location": "Centro de Convenções de Maceió",
+    "address": "Av. Comendador Gustavo Paiva, 5945 - Cruz das Almas, Maceió - AL",
+    "price": 120
+  },
+  {
+    "id": "19",
+    "title": "Festival de Música Eletrônica",
+    "category": "FESTIVAL",
+    "date": "2026-03-21T22:00:00",
+    "description": "Uma noite de música eletrônica com DJs nacionais e internacionais. Estrutura completa com palco, iluminação e som de alta qualidade.",
+    "location": "Praia de Ipioca",
+    "address": "Praia de Ipioca - Ipioca, Maceió - AL",
+    "price": 200
+  },
+  {
+    "id": "20",
+    "title": "Circo Contemporâneo: Luz e Sombra",
+    "category": "TEATRO",
+    "thumbnail": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
+    "date": "2026-02-04T20:00:00",
+    "description": "Espetáculo que mistura acrobacias, teatro e projeções visuais. Uma experiência sensorial única para todas as idades.",
+    "location": "Teatro Deodoro",
+    "address": "Praça Marechal Deodoro, s/n - Centro, Maceió - AL",
+    "price": 55
+  }
+]

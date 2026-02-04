@@ -1,0 +1,149 @@
+import { useSearchParams } from 'react-router-dom';
+import { useMemo, useCallback } from 'react';
+import { EventCategory } from '../types/event';
+import type { Event, DateFilter } from '../types/event';
+import { isToday, isTomorrow, isThisWeekend, isThisWeek, isNextWeek } from '../utils/date';
+import eventsData from '../data/events.json';
+
+interface UseEventFiltersReturn {
+  events: Event[];
+  filteredEvents: Event[];
+  totalCount: number;
+  filteredCount: number;
+  search: string;
+  categories: EventCategory[];
+  dateFilter: DateFilter;
+  setSearch: (value: string) => void;
+  toggleCategory: (value: EventCategory) => void;
+  setDateFilter: (value: DateFilter) => void;
+  clearFilters: () => void;
+  hasActiveFilters: boolean;
+}
+
+export function useEventFilters(): UseEventFiltersReturn {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Ler filtros da URL
+  const search = searchParams.get('search') || '';
+  const categoryParam = searchParams.get('categories');
+  const categories: EventCategory[] = categoryParam
+    ? categoryParam.split(',').filter((c): c is EventCategory => 
+        Object.values(EventCategory).includes(c as EventCategory)
+      )
+    : [];
+  const dateFilterParam = searchParams.get('date');
+  const dateFilter: DateFilter = ['today', 'tomorrow', 'weekend', 'this-week', 'next-week', 'all'].includes(dateFilterParam || '')
+    ? (dateFilterParam as DateFilter)
+    : 'this-week';
+
+  // Carregar e tipar eventos
+  const events = useMemo(() => {
+    return eventsData as Event[];
+  }, []);
+
+  // Aplicar filtros e ordenação
+  const filteredEvents = useMemo(() => {
+    let result = [...events];
+
+    // Filtrar eventos passados (opcional - pode remover se quiser mostrar todos)
+    // result = result.filter((event) => !isPastEvent(event.date));
+
+    // Filtro por busca
+    if (search.trim()) {
+      const searchLower = search.toLowerCase().trim();
+      result = result.filter((event) =>
+        event.title.toLowerCase().includes(searchLower) ||
+        event.location.toLowerCase().includes(searchLower) ||
+        event.description.toLowerCase().includes(searchLower)
+      );
+    }
+
+    // Filtro por categorias (múltiplas)
+    if (categories.length > 0) {
+      result = result.filter((event) => categories.includes(event.category));
+    }
+
+    // Filtro por data
+    if (dateFilter !== 'all') {
+      result = result.filter((event) => {
+        switch (dateFilter) {
+          case 'today':
+            return isToday(event.date);
+          case 'tomorrow':
+            return isTomorrow(event.date);
+          case 'weekend':
+            return isThisWeekend(event.date);
+          case 'this-week':
+            return isThisWeek(event.date);
+          case 'next-week':
+            return isNextWeek(event.date);
+          default:
+            return true;
+        }
+      });
+    }
+
+    // Ordenar por data (mais próxima primeiro) + título alfabético como desempate
+    result.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      if (dateA !== dateB) {
+        return dateA - dateB;
+      }
+      return a.title.localeCompare(b.title, 'pt-BR');
+    });
+
+    return result;
+  }, [events, search, categories, dateFilter]);
+
+  // Funções para atualizar filtros
+  const updateParams = useCallback((updates: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+    
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === '' || value === 'all') {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+    });
+
+    setSearchParams(newParams, { replace: true });
+  }, [searchParams, setSearchParams]);
+
+  const setSearch = useCallback((value: string) => {
+    updateParams({ search: value });
+  }, [updateParams]);
+
+  const toggleCategory = useCallback((value: EventCategory) => {
+    const newCategories = categories.includes(value)
+      ? categories.filter(c => c !== value)
+      : [...categories, value];
+    updateParams({ categories: newCategories.length > 0 ? newCategories.join(',') : null });
+  }, [updateParams, categories]);
+
+  const setDateFilter = useCallback((value: DateFilter) => {
+    updateParams({ date: value === 'all' ? null : value });
+  }, [updateParams]);
+
+  const clearFilters = useCallback(() => {
+    setSearchParams(new URLSearchParams(), { replace: true });
+  }, [setSearchParams]);
+
+  const hasActiveFilters = search !== '' || categories.length > 0 || (dateFilter !== 'this-week' && dateFilter !== 'all');
+
+  return {
+    events,
+    filteredEvents,
+    totalCount: events.length,
+    filteredCount: filteredEvents.length,
+    search,
+    categories,
+    dateFilter,
+    setSearch,
+    toggleCategory,
+    setDateFilter,
+    clearFilters,
+    hasActiveFilters,
+  };
+}
