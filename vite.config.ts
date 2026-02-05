@@ -7,8 +7,7 @@ export default defineConfig({
   // Base URL para domínio personalizado (raiz)
   base: '/',
   build: {
-    // Otimizações de build
-    minify: 'terser',
+    // Otimizações de build (usa esbuild por padrão)
     sourcemap: false,
   },
 })
