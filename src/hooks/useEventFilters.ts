@@ -34,7 +34,7 @@ export function useEventFilters(): UseEventFiltersReturn {
   const dateFilterParam = searchParams.get('date');
   const dateFilter: DateFilter = ['today', 'tomorrow', 'weekend', 'this-week', 'next-week', 'all'].includes(dateFilterParam || '')
     ? (dateFilterParam as DateFilter)
-    : 'this-week';
+    : 'today';
 
   // Carregar e tipar eventos
   const events = useMemo(() => {
@@ -101,7 +101,7 @@ export function useEventFilters(): UseEventFiltersReturn {
     const newParams = new URLSearchParams(searchParams);
     
     Object.entries(updates).forEach(([key, value]) => {
-      if (value === null || value === '' || value === 'all') {
+      if (value === null || value === '') {
         newParams.delete(key);
       } else {
         newParams.set(key, value);
@@ -123,14 +123,14 @@ export function useEventFilters(): UseEventFiltersReturn {
   }, [updateParams, categories]);
 
   const setDateFilter = useCallback((value: DateFilter) => {
-    updateParams({ date: value === 'all' ? null : value });
+    updateParams({ date: value === 'today' ? null : value });
   }, [updateParams]);
 
   const clearFilters = useCallback(() => {
     setSearchParams(new URLSearchParams(), { replace: true });
   }, [setSearchParams]);
 
-  const hasActiveFilters = search !== '' || categories.length > 0 || (dateFilter !== 'this-week' && dateFilter !== 'all');
+  const hasActiveFilters = search !== '' || categories.length > 0 || (dateFilter !== 'today' && dateFilter !== 'all');
 
   return {
     events,
