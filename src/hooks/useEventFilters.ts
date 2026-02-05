@@ -112,7 +112,13 @@ export function useEventFilters(): UseEventFiltersReturn {
   }, [searchParams, setSearchParams]);
 
   const setSearch = useCallback((value: string) => {
-    updateParams({ search: value });
+    // Se há texto de busca, aplica filtro "qualquer data" automaticamente
+    if (value.trim()) {
+      updateParams({ search: value, date: 'all' });
+    } else {
+      // Se limpou a busca, remove o parâmetro search (mantém date como está)
+      updateParams({ search: null });
+    }
   }, [updateParams]);
 
   const toggleCategory = useCallback((value: EventCategory) => {
