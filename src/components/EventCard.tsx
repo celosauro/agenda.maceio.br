@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { CalendarDays, MapPin, Share2 } from 'lucide-react';
 import type { Event } from '../types/event';
 import { CategoryBadge } from './CategoryBadge';
-import { formatShortDate, formatTime, getISODate, formatPrice } from '../utils/date';
+import { formatShortDate, formatTime, getISODate, formatPrice, generateEventSlug } from '../utils/date';
 
 interface EventCardProps {
   event: Event;
@@ -16,6 +16,9 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
     ? event.thumbnail.replace(/w=\d+&h=\d+/, variant === 'featured' ? 'w=800&h=400' : 'w=400&h=200')
     : PLACEHOLDER_IMAGE;
 
+  const eventSlug = generateEventSlug(event.date, event.title);
+  const eventUrl = `/evento/${eventSlug}`;
+
   // Card horizontal (wide) - estilo Open Event
   if (variant === 'wide') {
     return (
@@ -23,7 +26,7 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
         <div className="flex flex-col sm:flex-row">
           {/* Imagem lateral */}
           <div className="relative sm:w-48 h-48 sm:h-auto overflow-hidden bg-gradient-to-br from-sky-100 to-sky-50 flex-shrink-0">
-            <Link to={`/evento/${event.id}`}>
+            <Link to={eventUrl}>
               <img
                 src={imageUrl}
                 alt=""
@@ -41,7 +44,7 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
           {/* Conteúdo */}
           <div className="flex-1 p-5 flex flex-col justify-between">
             <div>
-              <Link to={`/evento/${event.id}`} className="block group/link">
+              <Link to={eventUrl} className="block group/link">
                 <h3 className="text-lg font-bold text-gray-900 group-hover/link:text-sky-600 transition-colors line-clamp-2 mb-2">
                   {event.title}
                 </h3>
@@ -71,15 +74,15 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
                 <button 
                   onClick={(e) => {
                     e.preventDefault();
-                    navigator.share?.({ title: event.title, url: `/evento/${event.id}` });
+                    navigator.share?.({ title: event.title, url: eventUrl });
                   }}
-                  className="p-2 text-gray-400 hover:text-sky-500 hover:bg-sky-50 rounded-full transition-colors"
+                  className="p-2 text-gray-400 hover:text-sky-500 hover:bg-sky-50 rounded-full transition-colors cursor-pointer"
                   aria-label="Compartilhar evento"
                 >
                   <Share2 className="w-5 h-5" />
                 </button>
                 <Link
-                  to={`/evento/${event.id}`}
+                  to={eventUrl}
                   className="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   Ver detalhes
@@ -96,7 +99,7 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
   if (variant === 'featured') {
     return (
       <article className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
-        <Link to={`/evento/${event.id}`} className="block">
+        <Link to={eventUrl} className="block">
           <div className="relative h-64 sm:h-80 overflow-hidden">
             <img
               src={imageUrl}
@@ -152,7 +155,7 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
   // Card padrão (vertical) - grid de 3 colunas
   return (
     <article className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 hover:border-sky-200 flex flex-col h-full">
-      <Link to={`/evento/${event.id}`} className="block flex-1 flex flex-col">
+      <Link to={eventUrl} className="block flex-1 flex flex-col">
         {/* Imagem */}
         <div className="relative h-44 overflow-hidden bg-gradient-to-br from-sky-100 to-sky-50">
           <img
@@ -209,15 +212,15 @@ export function EventCard({ event, variant = 'default' }: EventCardProps) {
         <button 
           onClick={(e) => {
             e.preventDefault();
-            navigator.share?.({ title: event.title, url: `/evento/${event.id}` });
+            navigator.share?.({ title: event.title, url: eventUrl });
           }}
-          className="p-2 text-gray-400 hover:text-sky-500 hover:bg-white rounded-full transition-colors"
+          className="p-2 text-gray-400 hover:text-sky-500 hover:bg-white rounded-full transition-colors cursor-pointer"
           aria-label="Compartilhar evento"
         >
           <Share2 className="w-5 h-5" />
         </button>
         <Link
-          to={`/evento/${event.id}`}
+          to={eventUrl}
           className="text-sky-500 hover:text-sky-600 text-sm font-semibold transition-colors"
         >
           Ver detalhes →

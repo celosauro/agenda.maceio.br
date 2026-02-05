@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CalendarDays, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Event } from '../types/event';
 import { CategoryBadge } from './CategoryBadge';
-import { formatShortDate, formatTime, getISODate, formatPrice } from '../utils/date';
+import { formatShortDate, formatTime, getISODate, formatPrice, generateEventSlug } from '../utils/date';
 
 interface FeaturedCarouselProps {
   events: Event[];
@@ -49,6 +49,8 @@ export function FeaturedCarousel({ events, autoPlayInterval = 5000 }: FeaturedCa
   const imageUrl = currentEvent.thumbnail
     ? currentEvent.thumbnail.replace(/w=\d+&h=\d+/, 'w=800&h=400')
     : PLACEHOLDER_IMAGE;
+  const eventSlug = generateEventSlug(currentEvent.date, currentEvent.title);
+  const eventUrl = `/evento/${eventSlug}`;
 
   return (
     <div
@@ -61,7 +63,7 @@ export function FeaturedCarousel({ events, autoPlayInterval = 5000 }: FeaturedCa
     >
       {/* Slide atual */}
       <div className="relative overflow-hidden rounded-2xl">
-        <Link to={`/evento/${currentEvent.id}`} className="block group">
+        <Link to={eventUrl} className="block group">
           <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
             <img
               src={imageUrl}

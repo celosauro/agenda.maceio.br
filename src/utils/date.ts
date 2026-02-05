@@ -204,3 +204,41 @@ export function formatPrice(price: number | null): string {
     currency: 'BRL',
   }).format(price);
 }
+
+/**
+ * Converte texto para slug (remove acentos e caracteres especiais)
+ */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+    .replace(/[^a-z0-9\s-]/g, '') // Remove caracteres especiais
+    .replace(/\s+/g, '-') // Espaços viram hífens
+    .replace(/-+/g, '-') // Múltiplos hífens viram um
+    .trim();
+}
+
+/**
+ * Gera slug do evento no formato: DIA-MES-ANO-TITULO-EVENTO
+ * Ex: "15-01-2025-show-do-safadao"
+ */
+export function generateEventSlug(date: string, title: string): string {
+  const eventDate = new Date(date);
+  const day = String(eventDate.getDate()).padStart(2, '0');
+  const month = String(eventDate.getMonth() + 1).padStart(2, '0');
+  const year = eventDate.getFullYear();
+  const titleSlug = slugify(title);
+  
+  return `${day}-${month}-${year}-${titleSlug}`;
+}
+
+/**
+ * Extrai data do slug no formato DIA-MES-ANO-TITULO
+ * Retorna { day, month, year } ou null se inválido
+ */
+export function parseDateFromSlug(slug: string): { day: string; month: string; year: string } | null {
+  const match = slug.match(/^(\d{2})-(\d{2})-(\d{4})-/);
+  if (!match) return null;
+  return { day: match[1], month: match[2], year: match[3] };
+}
