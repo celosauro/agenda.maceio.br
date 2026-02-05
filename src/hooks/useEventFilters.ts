@@ -130,7 +130,8 @@ export function useEventFilters(): UseEventFiltersReturn {
     setSearchParams(new URLSearchParams(), { replace: true });
   }, [setSearchParams]);
 
-  const hasActiveFilters = search !== '' || categories.length > 0 || (dateFilter !== 'today' && dateFilter !== 'all');
+  // Considerar filtro ativo quando há busca, categorias, ou qualquer filtro de data diferente de "all"
+  const hasActiveFilters = search !== '' || categories.length > 0 || dateFilter !== 'all';
 
   return {
     events,
