@@ -1,10 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>agenda.maceio.br</title>
+    <meta name="description" content="Agenda Maceió - Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>Agenda Maceió - Eventos e Entretenimento</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agenda.maceio.br/" />
+    <meta property="og:title" content="Agenda Maceió - Eventos e Entretenimento" />
+    <meta property="og:description" content="Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
+    <meta property="og:image" content="https://agenda.maceio.br/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://agenda.maceio.br/" />
+    <meta property="twitter:title" content="Agenda Maceió - Eventos e Entretenimento" />
+    <meta property="twitter:description" content="Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
+    
+    <!-- Script para SPA redirect do GitHub Pages -->
+    <script>
+      (function() {
+        const redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
