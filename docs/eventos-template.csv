@@ -1,0 +1,6 @@
+id,title,category,thumbnail,date,time,description,location,address,price,ticketUrl
+1,Show do Alceu Valença,SHOW,https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800,2026-02-15,20:00,Grande show de MPB com Alceu Valença e banda completa,Teatro Deodoro,Praça Marechal Deodoro - Centro - Maceió,120,https://example.com/ingressos
+2,O Auto da Compadecida,TEATRO,https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800,2026-02-20,19:30,Clássico de Ariano Suassuna em nova montagem,Teatro Gustavo Leite,Rua do Livramento 121 - Centro - Maceió,45,
+3,Festival de Jazz,FESTIVAL,https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=800,2026-02-22,18:00,Festival com artistas locais e nacionais,Orla de Pajuçara,Av. Robert Kennedy - Pajuçara - Maceió,,
+4,Stand-up Comedy,STANDUP,https://images.unsplash.com/photo-1527224857830-43a7acc85260?w=800,2026-02-25,21:00,Noite de humor com os melhores comediantes,Centro Cultural,Rua Barão de Penedo 65 - Centro - Maceió,35,https://example.com/comedy
+5,Exposição de Arte,EXPOSICAO,https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=800,2026-03-01,10:00,Mostra de artistas alagoanos contemporâneos,Museu Théo Brandão,Av. da Paz 1490 - Jaraguá - Maceió,,

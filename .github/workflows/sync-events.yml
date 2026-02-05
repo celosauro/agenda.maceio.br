@@ -1,0 +1,62 @@
+name: Sync Events from Google Sheets
+
+on:
+  # Executar manualmente
+  workflow_dispatch:
+  
+  # Executar a cada 6 horas
+  schedule:
+    - cron: '0 */6 * * *'
+  
+  # Executar em push para main (opcional)
+  # push:
+  #   branches: [main]
+
+jobs:
+  sync-events:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch events from Google Sheets
+        env:
+          GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
+          GOOGLE_SHEET_NAME: ${{ secrets.GOOGLE_SHEET_NAME }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: node scripts/fetch-events.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet src/data/events.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/events.json
+          git commit -m "🔄 Atualizar eventos do Google Sheets [skip ci]"
+          git push
+
+      - name: Trigger deploy (if changes)
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          echo "✅ Eventos atualizados. O deploy será acionado automaticamente."
