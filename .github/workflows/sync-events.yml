@@ -1,5 +1,8 @@
 name: Sync Events from Google Sheets
 
+permissions:
+  contents: write
+
 on:
   # Executar manualmente
   workflow_dispatch:
