@@ -1,16 +1,28 @@
 [
   {
     "id": "1",
-    "title": "Show do Alceu",
-    "category": "SHOW",
-    "thumbnail": "https://...",
+    "title": "Sábado no Maikai",
+    "category": "BARZINHO",
+    "thumbnail": "https://www.instagram.com/p/DU8gy3aDjzz/",
+    "date": "2026-02-21",
+    "time": "17:00",
+    "description": "Carnaval acabou mas o Maikai não para! 🌟 Envia no grupo e avisa que tem música, happy hour & felicidade todo dia até segunda! ",
+    "location": "Maikai Maceió",
+    "address": "",
+    "price": null,
+    "ticketUrl": "https://www.instagram.com/p/DU8gy3aDjzz/"
+  },
+  {
+    "id": "2",
+    "title": "Domingueira no Maikai",
+    "category": "BARZINHO",
+    "thumbnail": "https://www.instagram.com/p/DU8gy3aDjzz/",
     "date": "2026-02-22",
-    "time": "20:00",
-    "description": "Grande show...",
-    "location": "Teatro Deodoro",
-    "address": "Praça Marechal Deodoro",
-    "price": 80,
-    "ticketUrl": "https://...",
-    "destaque": "sim"
+    "time": "17:00",
+    "description": "Carnaval acabou mas o Maikai não para! 🌟 Envia no grupo e avisa que tem música, happy hour & felicidade todo dia até segunda! ",
+    "location": "Maikai Maceió",
+    "address": "",
+    "price": null,
+    "ticketUrl": "https://www.instagram.com/p/DU8gy3aDjzz/"
   }
 ]
