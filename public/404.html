@@ -2,7 +2,11 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <title>Agenda Maceió</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página não encontrada - Agenda Maceió</title>
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="5;url=/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script>
       // Redireciona para a página principal mantendo o path
       // Isso permite que o React Router gerencie a rota
@@ -10,8 +14,52 @@
       sessionStorage.setItem('redirect', path);
       window.location.replace('/');
     </script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0f172a;
+      }
+      .container {
+        background: white;
+        border-radius: 24px;
+        padding: 3rem 2rem;
+        max-width: 480px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+      .icon { font-size: 4rem; margin-bottom: 1rem; }
+      h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+      p { color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+      a {
+        display: inline-block;
+        background: #0ea5e9;
+        color: white;
+        text-decoration: none;
+        padding: 0.75rem 2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      a:hover { background: #0284c7; }
+      .redirect-note { font-size: 0.8rem; color: #94a3b8; margin-top: 1rem; }
+    </style>
   </head>
   <body>
-    <noscript>Redirecionando...</noscript>
+    <noscript>
+      <div class="container">
+        <div class="icon">🔍</div>
+        <h1>Página não encontrada</h1>
+        <p>A página que você procura não existe ou foi movida. Você será redirecionado em alguns segundos.</p>
+        <a href="/">Voltar para a página inicial</a>
+        <p class="redirect-note">Redirecionando automaticamente em 5 segundos...</p>
+      </div>
+    </noscript>
   </body>
 </html>

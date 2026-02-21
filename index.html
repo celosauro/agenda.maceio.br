@@ -2,25 +2,76 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Agenda Maceió - Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
+
+    <!-- Meta Tags Básicas -->
+    <title>Agenda Maceió - Eventos, Shows e Cultura</title>
+    <meta name="description" content="Descubra os melhores eventos de Maceió: shows, teatro, festivais, stand-up, exposições e muito mais na capital alagoana." />
+    <meta name="keywords" content="eventos maceió, shows maceió, teatro maceió, festivais alagoas, agenda cultural, entretenimento maceió, stand-up maceió, cultura alagoana" />
+    <meta name="author" content="Agenda Maceió" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://agenda.maceio.br/" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="BR-AL" />
+    <meta name="geo.placename" content="Maceió" />
+
+    <!-- Theme Color -->
     <meta name="theme-color" content="#0ea5e9" />
-    <title>Agenda Maceió - Eventos e Entretenimento</title>
-    
+    <meta name="msapplication-TileColor" content="#0ea5e9" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://agenda.maceio.br/" />
-    <meta property="og:title" content="Agenda Maceió - Eventos e Entretenimento" />
-    <meta property="og:description" content="Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
+    <meta property="og:title" content="Agenda Maceió - Eventos, Shows e Cultura" />
+    <meta property="og:description" content="Descubra os melhores eventos de Maceió: shows, teatro, festivais, stand-up, exposições e muito mais." />
     <meta property="og:image" content="https://agenda.maceio.br/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Agenda Maceió" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://agenda.maceio.br/" />
-    <meta property="twitter:title" content="Agenda Maceió - Eventos e Entretenimento" />
-    <meta property="twitter:description" content="Descubra os melhores eventos de entretenimento e cultura da capital alagoana" />
-    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Agenda Maceió - Eventos, Shows e Cultura" />
+    <meta name="twitter:description" content="Descubra os melhores eventos de Maceió: shows, teatro, festivais, stand-up, exposições e muito mais." />
+    <meta name="twitter:image" content="https://agenda.maceio.br/og-image.png" />
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Agenda Maceió",
+      "url": "https://agenda.maceio.br",
+      "description": "Descubra os melhores eventos de Maceió: shows, teatro, festivais, stand-up, exposições e cultura na capital alagoana.",
+      "inLanguage": "pt-BR"
+    }
+    </script>
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Agenda Maceió",
+      "url": "https://agenda.maceio.br",
+      "description": "Plataforma gratuita para descobrir eventos de entretenimento e cultura em Maceió, Alagoas.",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      }
+    }
+    </script>
+
     <!-- Script para SPA redirect do GitHub Pages -->
     <script>
       (function() {
@@ -35,5 +86,25 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Fallback para crawlers que não executam JavaScript -->
+    <noscript>
+      <div style="max-width: 800px; margin: 0 auto; padding: 2rem; font-family: sans-serif;">
+        <h1>Agenda Maceió - Eventos, Shows e Cultura</h1>
+        <p>Descubra os melhores eventos de entretenimento e cultura de Maceió, capital de Alagoas. Encontre shows, peças de teatro, festivais, stand-up comedy, exposições de arte, cinema, dança e muito mais.</p>
+        <h2>Categorias de Eventos</h2>
+        <ul>
+          <li>Shows e Música ao Vivo</li>
+          <li>Teatro e Artes Cênicas</li>
+          <li>Festivais e Eventos Culturais</li>
+          <li>Stand-up Comedy</li>
+          <li>Exposições de Arte</li>
+          <li>Cinema</li>
+          <li>Dança</li>
+          <li>Barzinho e Entretenimento</li>
+        </ul>
+        <p><strong>Ative o JavaScript para usar a aplicação completa.</strong></p>
+      </div>
+    </noscript>
   </body>
 </html>

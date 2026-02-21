@@ -66,10 +66,10 @@ export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = f
       {/* Próximos eventos - grid de cards */}
       {events.length > 0 && (
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="w-1 h-6 bg-gradient-to-b from-rose-500 to-orange-500 rounded-full"></span>
             Próximos Eventos
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {events.map((event) => (
               <EventCard key={event.id} event={event} />

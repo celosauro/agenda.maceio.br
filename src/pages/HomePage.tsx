@@ -36,6 +36,16 @@ export function HomePage() {
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Header searchValue={search} onSearchChange={setSearch} />
 
+        {/* Título SEO e texto introdutório */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full text-center">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            Eventos em Maceió
+          </h1>
+          <p className="text-sm text-gray-500 mt-2 max-w-2xl mx-auto">
+            Descubra shows, teatro, festivais, stand-up, exposições e muito mais na capital alagoana. Sua agenda cultural completa de Maceió, Alagoas.
+          </p>
+        </div>
+
         {/* Carrossel de Eventos em Destaque */}
         {featuredEvents.length > 0 && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full">
