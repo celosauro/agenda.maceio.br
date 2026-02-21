@@ -16,21 +16,12 @@ export function HomePage() {
     hasActiveFilters,
   } = useEventFilters();
 
-  // Eventos em destaque são sempre os 3 primeiros (fixos, não filtrados)
-  // Só mostrar o carrossel quando não há filtros ativos
-  const featuredEvents = hasActiveFilters ? [] : upcomingEvents.slice(0, 3);
-  const featuredIds = new Set(featuredEvents.map(e => e.id));
-  
-  // Quando há filtros, mostrar todos os filtrados
-  // Quando não há filtros, excluir os que já estão em destaque
-  const otherEvents = hasActiveFilters 
-    ? filteredEvents 
-    : filteredEvents.filter(e => !featuredIds.has(e.id));
-
-  // Contar quantos eventos em destaque também estão nos filtrados
-  const featuredInFilteredCount = hasActiveFilters 
-    ? 0 
-    : featuredEvents.filter(e => filteredEvents.some(fe => fe.id === e.id)).length;
+  // Eventos em destaque são apenas os que possuem destaque = 'sim'
+  // Só ocultar o carrossel quando há busca ou filtros de categoria ativos
+  const hasSearchOrCategoryFilters = search !== '' || categories.length > 0;
+  const featuredEvents = hasSearchOrCategoryFilters 
+    ? [] 
+    : upcomingEvents.filter(e => e.destaque === 'sim').slice(0, 3);
 
   return (
     <>
@@ -79,11 +70,10 @@ export function HomePage() {
 
           {/* Lista de eventos */}
           <EventList
-            events={otherEvents}
+            events={filteredEvents}
             totalCount={totalCount}
             isFiltered={hasActiveFilters}
             hasFeaturedEvent={featuredEvents.length > 0}
-            featuredCount={featuredInFilteredCount}
           />
         </main>
 

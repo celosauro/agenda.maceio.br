@@ -94,6 +94,7 @@ export interface Event {
   location: string;
   address: string;
   price: number | null; // null = gratuito
+  destaque?: 'sim' | 'nao'; // exibir no carrossel de destaque
 }
 
 // Tipo para filtro de data

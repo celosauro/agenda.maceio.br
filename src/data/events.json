@@ -10,6 +10,7 @@
     "location": "Teatro Deodoro",
     "address": "Praça Marechal Deodoro",
     "price": 80,
-    "ticketUrl": "https://..."
+    "ticketUrl": "https://...",
+    "destaque": "sim"
   }
 ]

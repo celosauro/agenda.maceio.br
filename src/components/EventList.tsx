@@ -6,10 +6,9 @@ interface EventListProps {
   totalCount: number;
   isFiltered: boolean;
   hasFeaturedEvent?: boolean;
-  featuredCount?: number;
 }
 
-export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = false, featuredCount = 0 }: EventListProps) {
+export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = false }: EventListProps) {
   if (events.length === 0 && !hasFeaturedEvent) {
     return (
       <div className="text-center py-20 px-4">
@@ -41,9 +40,6 @@ export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = f
     );
   }
 
-  // Calcular total exibido (eventos + featured)
-  const displayedCount = events.length + featuredCount;
-
   return (
     <section aria-label="Lista de eventos">
       {/* Contador de resultados */}
@@ -56,12 +52,12 @@ export function EventList({ events, totalCount, isFiltered, hasFeaturedEvent = f
         <p className="text-sm text-gray-500">
           {isFiltered ? (
             <>
-              Mostrando <span className="font-bold text-gray-700">{displayedCount}</span> de{' '}
+              Mostrando <span className="font-bold text-gray-700">{events.length}</span> de{' '}
               <span className="font-bold text-gray-700">{totalCount}</span> eventos
             </>
           ) : (
             <>
-              <span className="font-bold text-gray-700">{displayedCount}</span> eventos encontrados
+              <span className="font-bold text-gray-700">{events.length}</span> eventos encontrados
             </>
           )}
         </p>
