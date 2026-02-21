@@ -2,11 +2,12 @@ import { useSearchParams } from 'react-router-dom';
 import { useMemo, useCallback } from 'react';
 import { EventCategory } from '../types/event';
 import type { Event, DateFilter } from '../types/event';
-import { isToday, isTomorrow, isThisWeekend, isThisWeek, isNextWeek } from '../utils/date';
+import { isToday, isTomorrow, isThisWeekend, isThisWeek, isNextWeek, isPastEvent, parseLocalDate } from '../utils/date';
 import eventsData from '../data/events.json';
 
 interface UseEventFiltersReturn {
   events: Event[];
+  upcomingEvents: Event[];
   filteredEvents: Event[];
   totalCount: number;
   filteredCount: number;
@@ -41,12 +42,14 @@ export function useEventFilters(): UseEventFiltersReturn {
     return eventsData as Event[];
   }, []);
 
+  // Eventos futuros (base para contagem total)
+  const upcomingEvents = useMemo(() => {
+    return events.filter((event) => !isPastEvent(event.date));
+  }, [events]);
+
   // Aplicar filtros e ordenação
   const filteredEvents = useMemo(() => {
-    let result = [...events];
-
-    // Filtrar eventos passados (opcional - pode remover se quiser mostrar todos)
-    // result = result.filter((event) => !isPastEvent(event.date));
+    let result = [...upcomingEvents];
 
     // Filtro por busca
     if (search.trim()) {
@@ -85,8 +88,8 @@ export function useEventFilters(): UseEventFiltersReturn {
 
     // Ordenar por data (mais próxima primeiro) + título alfabético como desempate
     result.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+      const dateA = parseLocalDate(a.date).getTime();
+      const dateB = parseLocalDate(b.date).getTime();
       if (dateA !== dateB) {
         return dateA - dateB;
       }
@@ -94,7 +97,7 @@ export function useEventFilters(): UseEventFiltersReturn {
     });
 
     return result;
-  }, [events, search, categories, dateFilter]);
+  }, [upcomingEvents, search, categories, dateFilter]);
 
   // Funções para atualizar filtros
   const updateParams = useCallback((updates: Record<string, string | null>) => {
@@ -141,8 +144,9 @@ export function useEventFilters(): UseEventFiltersReturn {
 
   return {
     events,
+    upcomingEvents,
     filteredEvents,
-    totalCount: events.length,
+    totalCount: upcomingEvents.length,
     filteredCount: filteredEvents.length,
     search,
     categories,

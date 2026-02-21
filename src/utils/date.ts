@@ -34,10 +34,21 @@ const fullDateTimeFormatter = new Intl.DateTimeFormat('pt-BR', {
 });
 
 /**
+ * Parseia uma string de data (YYYY-MM-DD) como data local, não UTC
+ */
+export function parseLocalDate(dateString: string): Date {
+  // Se a string tem apenas data (YYYY-MM-DD), adiciona T00:00:00 para forçar parse local
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    return new Date(dateString + 'T00:00:00');
+  }
+  return new Date(dateString);
+}
+
+/**
  * Formata data para exibição no card (ex: "Sáb, 7 de fev")
  */
 export function formatShortDate(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const formatted = shortDateFormatter.format(date);
   // Capitaliza primeira letra
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
@@ -47,7 +58,7 @@ export function formatShortDate(dateString: string): string {
  * Formata data completa para página de detalhes (ex: "Sábado, 7 de fevereiro")
  */
 export function formatFullDate(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const formatted = fullDateFormatter.format(date);
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
@@ -56,7 +67,7 @@ export function formatFullDate(dateString: string): string {
  * Formata hora (ex: "19:00")
  */
 export function formatTime(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   return timeFormatter.format(date);
 }
 
@@ -64,7 +75,7 @@ export function formatTime(dateString: string): string {
  * Formata data e hora completos para página de detalhes
  */
 export function formatFullDateTime(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const formatted = fullDateTimeFormatter.format(date);
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
@@ -73,14 +84,14 @@ export function formatFullDateTime(dateString: string): string {
  * Retorna data no formato ISO para atributo datetime do elemento <time>
  */
 export function getISODate(dateString: string): string {
-  return new Date(dateString).toISOString();
+  return parseLocalDate(dateString).toISOString();
 }
 
 /**
  * Verifica se a data é hoje
  */
 export function isToday(dateString: string): boolean {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const today = new Date();
   return (
     date.getDate() === today.getDate() &&
@@ -93,7 +104,7 @@ export function isToday(dateString: string): boolean {
  * Verifica se a data é amanhã
  */
 export function isTomorrow(dateString: string): boolean {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   return (
@@ -107,7 +118,7 @@ export function isTomorrow(dateString: string): boolean {
  * Verifica se a data é neste fim de semana (próximo sábado ou domingo)
  */
 export function isThisWeekend(dateString: string): boolean {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const today = new Date();
   
   // Encontrar o próximo sábado
@@ -144,7 +155,7 @@ export function isThisWeekend(dateString: string): boolean {
  * Verifica se a data está nesta semana (a partir de hoje até domingo)
  */
 export function isThisWeek(dateString: string): boolean {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   
@@ -161,7 +172,7 @@ export function isThisWeek(dateString: string): boolean {
  * Verifica se a data está na próxima semana
  */
 export function isNextWeek(dateString: string): boolean {
-  const date = new Date(dateString);
+  const date = parseLocalDate(dateString);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   
@@ -187,9 +198,10 @@ export function isNextWeek(dateString: string): boolean {
  * Verifica se o evento já passou
  */
 export function isPastEvent(dateString: string): boolean {
-  const date = new Date(dateString);
-  const now = new Date();
-  return date < now;
+  const date = parseLocalDate(dateString);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today;
 }
 
 /**
@@ -224,7 +236,7 @@ function slugify(text: string): string {
  * Ex: "15-01-2025-show-do-safadao"
  */
 export function generateEventSlug(date: string, title: string): string {
-  const eventDate = new Date(date);
+  const eventDate = parseLocalDate(date);
   const day = String(eventDate.getDate()).padStart(2, '0');
   const month = String(eventDate.getMonth() + 1).padStart(2, '0');
   const year = eventDate.getFullYear();

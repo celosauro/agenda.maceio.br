@@ -3,7 +3,7 @@ import { useEventFilters } from '../hooks/useEventFilters';
 
 export function HomePage() {
   const {
-    events,
+    upcomingEvents,
     filteredEvents,
     totalCount,
     search,
@@ -18,7 +18,7 @@ export function HomePage() {
 
   // Eventos em destaque são sempre os 3 primeiros (fixos, não filtrados)
   // Só mostrar o carrossel quando não há filtros ativos
-  const featuredEvents = hasActiveFilters ? [] : events.slice(0, 3);
+  const featuredEvents = hasActiveFilters ? [] : upcomingEvents.slice(0, 3);
   const featuredIds = new Set(featuredEvents.map(e => e.id));
   
   // Quando há filtros, mostrar todos os filtrados

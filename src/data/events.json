@@ -4,25 +4,12 @@
     "title": "Show do Alceu",
     "category": "SHOW",
     "thumbnail": "https://...",
-    "date": "2026-02-15",
+    "date": "2026-02-22",
     "time": "20:00",
     "description": "Grande show...",
     "location": "Teatro Deodoro",
     "address": "Praça Marechal Deodoro",
     "price": 80,
     "ticketUrl": "https://..."
-  },
-  {
-    "id": "2",
-    "title": "Peça Teatral",
-    "category": "TEATRO",
-    "thumbnail": "https://...",
-    "date": "2026-02-20",
-    "time": "19:30",
-    "description": "Comédia...",
-    "location": "Teatro Gustavo Leite",
-    "address": "Rua do Livramento",
-    "price": null,
-    "ticketUrl": null
   }
 ]
